@@ -1,6 +1,7 @@
 <template name="Home_Page">
   <div class="ui container">
 
+    {{#if Template.subscriptionsReady}}
     <table style="margin-top: 20px" class="ui celled table">
       <thead>
       <tr>
@@ -11,36 +12,23 @@
         <th>E-mail</th>
       </tr>
       </thead>
+
       <tbody>
+      {{#each contact in contactsList}}
       <tr>
-        <td>
-          Brandon
-        </td>
-        <td>Doan</td>
-        <td>814 Kahuna Lane, Honolulu, HI</td>
-        <td>808-499-9103</td>
-        <td>doanb@hawaii.edu</td>
+        <td>{{contact.first}}</td>
+        <td>{{contact.last}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.telephone}}</td>
+        <td>{{contact.email}}</td>
       </tr>
-      <tr>
-        <td>
-          Harry
-        </td>
-        <td>Potter</td>
-        <td>814 Kahuna Lane, Honolulu, HI</td>
-        <td>808-499-9103</td>
-        <td>Snapesucks@hawaii.edu</td>
-      </tr>
-      <tr>
-        <td>
-          Luke
-        </td>
-        <td>Skywalker</td>
-        <td>814 Kahuna Lane, Honolulu, HI</td>
-        <td>808-499-9103</td>
-        <td>1handman@hawaii.edu</td>
-      </tr>
+      {{/each}}
       </tbody>
     </table>
+    {{else}}
+    {{> Loading}}
+    {{/if}}
+
 
   </div>
 </template>
